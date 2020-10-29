@@ -37,6 +37,12 @@
             this.txtGuess = new System.Windows.Forms.TextBox();
             this.btmGuess = new System.Windows.Forms.Button();
             this.lblWord = new System.Windows.Forms.Label();
+            this.ofdWords = new System.Windows.Forms.OpenFileDialog();
+            this.lblError = new System.Windows.Forms.Label();
+            this.lblTest = new System.Windows.Forms.Label();
+            this.btnOpen = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.lstUsedLetters = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBlood)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,6 +119,7 @@
             this.btmGuess.TabIndex = 7;
             this.btmGuess.Text = "Guess";
             this.btmGuess.UseVisualStyleBackColor = true;
+            this.btmGuess.Click += new System.EventHandler(this.btmGuess_Click);
             // 
             // lblWord
             // 
@@ -124,12 +131,67 @@
             this.lblWord.TabIndex = 8;
             this.lblWord.Text = "_ _ _ _ _ _ _ _";
             // 
+            // ofdWords
+            // 
+            this.ofdWords.FileName = "openFileDialog1";
+            // 
+            // lblError
+            // 
+            this.lblError.AutoSize = true;
+            this.lblError.ForeColor = System.Drawing.Color.Red;
+            this.lblError.Location = new System.Drawing.Point(590, 433);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(0, 13);
+            this.lblError.TabIndex = 9;
+            // 
+            // lblTest
+            // 
+            this.lblTest.AutoSize = true;
+            this.lblTest.Location = new System.Drawing.Point(554, 274);
+            this.lblTest.Name = "lblTest";
+            this.lblTest.Size = new System.Drawing.Size(0, 13);
+            this.lblTest.TabIndex = 10;
+            // 
+            // btnOpen
+            // 
+            this.btnOpen.Location = new System.Drawing.Point(227, 200);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(75, 20);
+            this.btnOpen.TabIndex = 11;
+            this.btnOpen.Text = "Open";
+            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(308, 200);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 20);
+            this.btnClear.TabIndex = 12;
+            this.btnClear.Text = "New Word";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // lstUsedLetters
+            // 
+            this.lstUsedLetters.FormattingEnabled = true;
+            this.lstUsedLetters.Location = new System.Drawing.Point(590, 149);
+            this.lstUsedLetters.Name = "lstUsedLetters";
+            this.lstUsedLetters.Size = new System.Drawing.Size(165, 199);
+            this.lstUsedLetters.TabIndex = 14;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lstUsedLetters);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnOpen);
+            this.Controls.Add(this.lblTest);
+            this.Controls.Add(this.lblError);
             this.Controls.Add(this.lblWord);
             this.Controls.Add(this.btmGuess);
             this.Controls.Add(this.txtGuess);
@@ -158,6 +220,12 @@
         private System.Windows.Forms.TextBox txtGuess;
         private System.Windows.Forms.Button btmGuess;
         private System.Windows.Forms.Label lblWord;
+        private System.Windows.Forms.OpenFileDialog ofdWords;
+        private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.Label lblTest;
+        private System.Windows.Forms.Button btnOpen;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.ListBox lstUsedLetters;
     }
 }
 
