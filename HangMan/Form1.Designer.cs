@@ -107,7 +107,7 @@
             // 
             // btmGuess
             // 
-            this.btmGuess.Location = new System.Drawing.Point(139, 200);
+            this.btmGuess.Location = new System.Drawing.Point(146, 200);
             this.btmGuess.Name = "btmGuess";
             this.btmGuess.Size = new System.Drawing.Size(75, 20);
             this.btmGuess.TabIndex = 7;
