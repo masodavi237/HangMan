@@ -222,10 +222,10 @@
             // pbxBlood
             // 
             this.pbxBlood.Image = global::HangMan.Properties.Resources.Blood_removebg_preview;
-            this.pbxBlood.Location = new System.Drawing.Point(29, 75);
+            this.pbxBlood.Location = new System.Drawing.Point(36, 65);
             this.pbxBlood.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.pbxBlood.Name = "pbxBlood";
-            this.pbxBlood.Size = new System.Drawing.Size(1109, 143);
+            this.pbxBlood.Size = new System.Drawing.Size(924, 143);
             this.pbxBlood.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxBlood.TabIndex = 1;
             this.pbxBlood.TabStop = false;
