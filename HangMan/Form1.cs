@@ -17,14 +17,14 @@ namespace HangMan
         List<string> words = new List<string>();
         string hiddenWord;
         string guess;
-        string lostgame;
-        string wingame;
+        string copyHiddenWord;
         int wins;
         int losses;
         int incorrect;
         int randomForIndex;
         int indexLength;
         int indexOfList;
+        int correctGuessed;
         bool contains;
         bool sameLetter;
         bool wordChosen;
@@ -80,8 +80,16 @@ namespace HangMan
                                     hiddenWord = hiddenWord.Insert(i, "0");
                                     lblWord.Text = lblWord.Text.Remove((i * 2), 1);
                                     lblWord.Text = lblWord.Text.Insert((i * 2), guess);
-                                    lblError.Text = incorrect + "";
+                                    
+                                    correctGuessed += 1;
 
+                                    if (correctGuessed == hiddenWord.Length)
+                                    {
+                                        wins += 1;
+                                        lblWinsDisp.Text = wins + "";
+                                        wordChosen = false;
+                                        lblEndGame.Text = "YOU WIN";
+                                    }
                                 }
                             }
                         }
@@ -97,32 +105,9 @@ namespace HangMan
                                 losses += 1;
                                 lblLossesDisp.Text = losses + "";
                                 wordChosen = false;
-
-                                for (int i = 0; i <= hiddenWord.Length-1; i++)
-                                {
-
-                                    System.Threading.Thread.Sleep(50);
-                                    if (hiddenWord.Length <= lostgame.Length)
-                                    {
-                                        if (i <= hiddenWord.Length)
-                                        {
-                                            lblWord.Text = lblWord.Text.Remove((i * 2), 1);
-                                            lblWord.Text = lblWord.Text.Insert((i * 2), (lostgame[i] + ""));
-                                            
-                                        }
-                                        else
-                                        {
-                                            /*lblWord.Text = lblWord.Text.Insert((i * 2), (lostgame[i] + ""));
-                                            System.Threading.Thread.Sleep(50);*/
-                                        }
-
-                                    }
-                                    else
-                                    {
-
-                                    }
-                                }
-
+                                lblEndGame.Text = "YOU LOSE" + ($" The word was {copyHiddenWord}");
+                                
+                                
 
                             }
                         }
@@ -136,6 +121,7 @@ namespace HangMan
                 lblError.Text = "Please click 'New Word' and set difficulty";
             }
 
+           
 
         }
 
@@ -161,9 +147,12 @@ namespace HangMan
         private void btnClear_Click(object sender, EventArgs e)
         {
 
+            correctGuessed = 0;
             indexLength = words.Count;
             randomForIndex = Generator.Next(0, indexLength);
             lstUsedLetters.Items.Clear();
+            lblEndGame.Text = "";
+            lblError.Text = "";
 
             if (easy)
             {
@@ -177,7 +166,7 @@ namespace HangMan
             }
             else if (hard)
             {
-                incorrect = 8;
+                incorrect = 5;
                 pbxHangDisplay.Image = hangmans[incorrect];
             }
            
@@ -186,12 +175,13 @@ namespace HangMan
             if (indexLength != 0 && diffSet)
             {
                 hiddenWord = words[randomForIndex];
+                copyHiddenWord = hiddenWord;
                 lblWord.Text = "";
 
                 for (int i = 0; i < hiddenWord.Length; i ++)
                 {
                     lblWord.Text = String.Concat(lblWord.Text, "_ ");
-                    lblError.Text = hiddenWord;
+                    /*lblError.Text = hiddenWord;*/
                 }
 
                 wordChosen = true;
@@ -232,8 +222,6 @@ namespace HangMan
             incorrect = 0;
             pbxHangDisplay.Image = global::HangMan.Properties.Resources._0;
 
-            lostgame = "YOU LOSE";
-            wingame = "YOU WIN";
         }
 
         private void rdbEasy_CheckedChanged(object sender, EventArgs e)
@@ -258,6 +246,16 @@ namespace HangMan
             hard = true;
             easy = false;
             normal = false;
+        }
+
+        private void lstUsedLetters_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblLosses_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
